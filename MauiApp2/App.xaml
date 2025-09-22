@@ -1,4 +1,4 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<?xml version = "1.0" encoding = "UTF-8" ?>
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MauiApp2"
@@ -9,6 +9,33 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="buttonStyle"
+                   TargetType="Button">
+                <Setter Property="MaximumHeightRequest" Value="50"/>
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="MaximumWidthRequest" Value="100"/>
+                <Setter Property="BackgroundColor" Value="#C2AFF0"/>
+                <Setter Property="BorderColor" Value="#457EAC"/>
+                <Setter Property="BorderWidth" Value="4"/>
+            </Style>
+            <Style x:Key="scrollStyle"
+                   TargetType="ScrollView">
+                <Setter Property="BackgroundColor" Value="#9191E9"/>
+            </Style>
+            <Style x:Key="labelStyle"
+                   TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            <Style x:Key="colStyle"
+                   TargetType="CollectionView">
+                <Setter Property="BackgroundColor" Value="#C2AFF0"/>
+            </Style>
+            <Style x:Key="entryStyle"
+                   TargetType="Entry">
+                <Setter Property="PlaceholderColor" Value="white"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
