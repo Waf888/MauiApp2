@@ -1,46 +1,61 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp2.MainPage">
 
+    <ScrollView 
+                Style="{StaticResource scrollStyle}">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.1*"/>
-                <RowDefinition Height="0.8*"/>
-                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.1*"></RowDefinition>
+                <RowDefinition Height="0.8*"></RowDefinition>
+                <RowDefinition Height="0.1*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label
-                Text="Shopping list"/>
-
-            <Entry
-                Placeholder="Wpisz artykuł"
-                Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                MinimumHeightRequest="60"/>
-
-            <Button Text="Add Product"
-                    Grid.Row="0"
-                    Grid.Column="2"
-                    MaximumHeightRequest="50"/>
-        <CollectionView ItemsSource="{Binding Products}"
-                Grid.Row="1"
-                Grid.ColumnSpan="3">
-            <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <Label Text="{Binding Name}"/>
-            </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        <Button Text="usun produkt"
-                    Grid.Row="2"
-                    Grid.Column="1"
-                    MaximumHeightRequest="50"/>
+            <Label Text="SHOPPING LIST"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   HeightRequest="50"
+                   Style="{StaticResource labelStyle}"></Label>
+            <Entry Grid.Row="0" 
+                   Grid.Column="0" 
+                   Grid.ColumnSpan="1" 
+                   Placeholder="Input item"
+                   MaximumHeightRequest="60"
+                   x:Name="AddItem"
+                   Style="{StaticResource entryStyle}"
+            ></Entry>
+            <Button 
+                Clicked="AddButton_Clicked"
+                Grid.Row="0" 
+                Grid.Column="2" 
+                Text="Add item"
+                Style="{StaticResource buttonStyle}"></Button>
+            <CollectionView ItemsSource="{Binding Products}"
+                            Style="{StaticResource colStyle}"
+                            Grid.Row="1" 
+                            Grid.ColumnSpan="3"
+                            x:Name="wyswietl"
+                            SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="*,*" Padding="10">
+                            <Label Grid.Column="0" Text="{Binding Name}" VerticalOptions="Center" />
+                            <Label Grid.Column="1" Text="{Binding Quantity}" VerticalOptions="Center" HorizontalOptions="End" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button Grid.Row="2" 
+                    Grid.Column="1" 
+                    Text="Delete item"
+                    Clicked="DelButton_Clicked"
+                    Style="{StaticResource buttonStyle}"></Button>
         </Grid>
+    </ScrollView>
 
 </ContentPage>
